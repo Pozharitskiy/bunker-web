@@ -24,10 +24,13 @@ export default function SupportPage() {
             marginBottom: '0.75rem',
           }}
         >
-          SUPPORT
+          BUNKER SUPPORT
         </h1>
+        <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.88rem', color: 'var(--text-muted)', maxWidth: '560px', lineHeight: 1.8, marginBottom: '0.75rem' }}>
+          Bunker is a survival social-deduction party game. Players receive unique character cards with traits, professions, and health conditions — then debate who deserves a spot in the underground bunker when the world ends. Powered by an AI World Builder that generates unique apocalypse scenarios every game.
+        </p>
         <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.88rem', color: 'var(--text-muted)', maxWidth: '500px', lineHeight: 1.8 }}>
-          Need help? We&apos;ve got you covered. Browse the FAQ below or reach out directly.
+          Need help? Browse the FAQ below or reach out directly.
         </p>
       </div>
 

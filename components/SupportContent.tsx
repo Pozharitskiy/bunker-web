@@ -4,24 +4,20 @@ import Link from 'next/link'
 
 const faqs = [
   {
-    q: 'How many players do I need?',
-    a: 'Bunker works best with 4–12 players. One person runs the app; everyone else plays on a single screen or their own device.',
+    q: 'How do I cancel my subscription?',
+    a: 'Open the App Store on your iPhone → tap your profile photo → Subscriptions → find Bunker → tap Cancel Subscription. Changes take effect at the end of the current billing period.',
   },
   {
-    q: 'Do all players need to download the app?',
-    a: 'No. One player downloads the app and acts as the host. Other players participate without installing anything.',
-  },
-  {
-    q: 'How long does a game take?',
-    a: 'A typical session lasts 20–45 minutes depending on player count and how much everyone debates.',
-  },
-  {
-    q: 'The app crashed — what should I do?',
+    q: 'The app crashed — what do I do?',
     a: 'Force-quit and reopen the app. Game state is preserved locally. If the issue persists, email us with your iOS version and device model.',
   },
   {
-    q: 'How do I restore a purchase?',
-    a: "Tap Settings → Restore Purchases inside the app. Make sure you're signed into the same Apple ID used for the original purchase.",
+    q: 'How many players can play?',
+    a: 'Bunker works best with 4–12 players. One person runs the app as the host; everyone else follows along on the same screen or their own device.',
+  },
+  {
+    q: 'How does the AI World Builder work?',
+    a: "The AI World Builder generates a unique apocalypse scenario before each game — a different catastrophe, location, and bunker setup every time. No two games are the same. The scenario shapes which character traits become valuable or deadly.",
   },
 ]
 
@@ -62,7 +58,7 @@ export default function SupportContent() {
             EMAIL SUPPORT
           </p>
           <a
-            href="mailto:support@bunkergame.app"
+            href="mailto:supportbunker@gmail.com"
             style={{
               fontFamily: 'Roboto Mono, monospace',
               fontSize: '1rem',
@@ -73,7 +69,7 @@ export default function SupportContent() {
             onMouseEnter={e => ((e.target as HTMLElement).style.opacity = '0.75')}
             onMouseLeave={e => ((e.target as HTMLElement).style.opacity = '1')}
           >
-            support@bunkergame.app
+            supportbunker@gmail.com
           </a>
           <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.3rem' }}>
             We reply within 24–48 hours.
@@ -124,6 +120,20 @@ export default function SupportContent() {
 
       {/* links */}
       <div style={{ marginTop: '3rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <Link
+          href="/"
+          style={{
+            fontFamily: 'Roboto Mono, monospace',
+            fontSize: '0.78rem',
+            color: 'var(--text-muted)',
+            textDecoration: 'none',
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={e => ((e.target as HTMLElement).style.color = 'var(--text)')}
+          onMouseLeave={e => ((e.target as HTMLElement).style.color = 'var(--text-muted)')}
+        >
+          ← Back to Home
+        </Link>
         <Link
           href="/privacy"
           style={{
