@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import LegalPageHeader from '@/components/LegalPageHeader'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy — Bunker',
@@ -29,26 +30,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 export default function PrivacyPage() {
   return (
     <div style={{ maxWidth: '760px', margin: '0 auto', padding: '5rem 1.5rem 6rem' }}>
-      <div style={{ marginBottom: '3rem' }}>
-        <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.72rem', color: 'var(--primary)', letterSpacing: '0.18em', marginBottom: '0.75rem' }}>
-          LEGAL
-        </p>
-        <h1
-          style={{
-            fontFamily: 'Orbitron, sans-serif',
-            fontWeight: 900,
-            fontSize: 'clamp(1.6rem, 5vw, 2.5rem)',
-            letterSpacing: '0.06em',
-            color: 'var(--text)',
-            marginBottom: '0.75rem',
-          }}
-        >
-          PRIVACY POLICY
-        </h1>
-        <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-          Last updated: May 1, 2025 &nbsp;·&nbsp; Bundle ID: com.dzianis.bunker
-        </p>
-      </div>
+      <LegalPageHeader type="privacy" />
 
       <div
         style={{

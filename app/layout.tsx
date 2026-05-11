@@ -3,6 +3,7 @@ import './globals.css'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import HexBackground from '@/components/HexBackground'
+import { LangProvider } from '@/lib/i18n'
 
 export const metadata: Metadata = {
   title: 'Bunker — Survival Social Deduction Game',
@@ -24,10 +25,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <HexBackground />
-        <NavBar />
-        <main className="relative z-10 min-h-screen">{children}</main>
-        <Footer />
+        <LangProvider>
+          <HexBackground />
+          <NavBar />
+          <main className="relative z-10 min-h-screen">{children}</main>
+          <Footer />
+        </LangProvider>
       </body>
     </html>
   )

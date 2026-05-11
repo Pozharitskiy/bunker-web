@@ -1,8 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import { useLang } from '@/lib/i18n'
 
 export default function Footer() {
+  const { t } = useLang()
+
   return (
     <footer
       className="relative z-20 w-full"
@@ -17,9 +20,9 @@ export default function Footer() {
 
         <nav className="flex gap-5">
           {[
-            { href: '/privacy', label: 'Privacy Policy' },
-            { href: '/terms', label: 'Terms of Use' },
-            { href: '/support', label: 'Support' },
+            { href: '/privacy', label: t.footer.privacy },
+            { href: '/terms', label: t.footer.terms },
+            { href: '/support', label: t.footer.support },
           ].map(({ href, label }) => (
             <Link
               key={href}
@@ -40,7 +43,7 @@ export default function Footer() {
         </nav>
 
         <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.72rem', color: 'var(--text-muted)', margin: 0 }}>
-          © {new Date().getFullYear()} Bunker Game. All rights reserved.
+          © {new Date().getFullYear()} Bunker Game. {t.footer.rights}
         </p>
       </div>
     </footer>
