@@ -3,7 +3,7 @@
 import ScrollReveal from '@/components/ScrollReveal'
 import { useLang, Lang } from '@/lib/i18n'
 
-const APP_STORE_URL = '#'
+const APP_STORE_URL = 'https://apps.apple.com/app/bunker-survival-party-game/id6766305541'
 
 const galleryTitle: Record<Lang, string> = {
   en: 'INSIDE THE APP',
