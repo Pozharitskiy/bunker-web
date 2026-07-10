@@ -29,13 +29,20 @@ export default function NavBar() {
   return (
     <header
       className="relative z-20 w-full"
-      style={{ borderBottom: '1px solid var(--border)', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)' }}
+      style={{ borderBottom: '1px solid var(--border-soft)', background: 'rgba(11,7,16,0.82)', backdropFilter: 'blur(12px)' }}
     >
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
         <Link
           href="/"
-          style={{ fontFamily: 'Orbitron, sans-serif', color: 'var(--primary)', fontWeight: 900, fontSize: '1.1rem', letterSpacing: '0.12em', textDecoration: 'none', flexShrink: 0 }}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', fontFamily: 'var(--font-display)', color: 'var(--text)', fontWeight: 700, fontSize: '1.15rem', letterSpacing: '0.14em', textDecoration: 'none', flexShrink: 0 }}
         >
+          <img
+            src="/app-icon.jpg"
+            alt=""
+            width={30}
+            height={30}
+            style={{ borderRadius: '8px', border: '1px solid var(--border-soft)', display: 'block' }}
+          />
           BUNKER
         </Link>
 
@@ -48,7 +55,7 @@ export default function NavBar() {
                   <Link
                     href={href}
                     style={{
-                      fontFamily: 'Roboto Mono, monospace',
+                      fontFamily: 'var(--font-mono)',
                       fontSize: '0.78rem',
                       letterSpacing: '0.08em',
                       textDecoration: 'none',
@@ -70,13 +77,13 @@ export default function NavBar() {
             <button
               onClick={() => setOpen(v => !v)}
               style={{
-                fontFamily: 'Roboto Mono, monospace',
+                fontFamily: 'var(--font-mono)',
                 fontSize: '0.72rem',
                 letterSpacing: '0.1em',
                 padding: '0.28rem 0.6rem',
                 borderRadius: '6px',
                 border: '1px solid var(--border)',
-                background: open ? 'rgba(251,191,36,0.1)' : 'transparent',
+                background: open ? 'rgba(242,56,79,0.1)' : 'transparent',
                 color: 'var(--primary)',
                 cursor: 'pointer',
                 display: 'flex',
@@ -84,7 +91,7 @@ export default function NavBar() {
                 gap: '0.3rem',
                 transition: 'background 0.2s, border-color 0.2s',
               }}
-              onMouseEnter={e => { if (!open) (e.currentTarget as HTMLElement).style.borderColor = 'rgba(251,191,36,0.5)' }}
+              onMouseEnter={e => { if (!open) (e.currentTarget as HTMLElement).style.borderColor = 'rgba(242,56,79,0.5)' }}
               onMouseLeave={e => { if (!open) (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)' }}
             >
               {lang.toUpperCase()}
@@ -99,7 +106,7 @@ export default function NavBar() {
                   position: 'absolute',
                   top: 'calc(100% + 6px)',
                   right: 0,
-                  background: 'rgba(15,20,25,0.97)',
+                  background: 'rgba(17,11,24,0.97)',
                   border: '1px solid var(--border)',
                   borderRadius: '10px',
                   padding: '0.6rem',
@@ -117,13 +124,13 @@ export default function NavBar() {
                     key={code}
                     onClick={() => { setLang(code); setOpen(false) }}
                     style={{
-                      fontFamily: 'Roboto Mono, monospace',
+                      fontFamily: 'var(--font-mono)',
                       fontSize: '0.68rem',
                       letterSpacing: '0.08em',
                       padding: '0.3rem 0.4rem',
                       borderRadius: '5px',
-                      border: lang === code ? '1px solid rgba(251,191,36,0.6)' : '1px solid transparent',
-                      background: lang === code ? 'rgba(251,191,36,0.12)' : 'transparent',
+                      border: lang === code ? '1px solid rgba(242,56,79,0.6)' : '1px solid transparent',
+                      background: lang === code ? 'rgba(242,56,79,0.12)' : 'transparent',
                       color: lang === code ? 'var(--primary)' : 'var(--text-muted)',
                       cursor: 'pointer',
                       transition: 'all 0.15s',

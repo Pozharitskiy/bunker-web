@@ -1,124 +1,221 @@
 'use client'
 
 import ScrollReveal from '@/components/ScrollReveal'
-import { useLang } from '@/lib/i18n'
+import { useLang, Lang } from '@/lib/i18n'
+
+const APP_STORE_URL = '#'
+
+const galleryTitle: Record<Lang, string> = {
+  en: 'INSIDE THE APP',
+  ru: 'ВНУТРИ ПРИЛОЖЕНИЯ',
+  pl: 'WEWNĄTRZ APLIKACJI',
+  de: 'EINBLICK IN DIE APP',
+  fr: "À L'INTÉRIEUR DE L'APP",
+  es: 'DENTRO DE LA APP',
+  it: "DENTRO L'APP",
+  pt: 'DENTRO DO APP',
+  tr: 'UYGULAMANIN İÇİ',
+  zh: '应用内截图',
+  ja: 'アプリの中身',
+  ko: '앱 미리보기',
+  ar: 'داخل التطبيق',
+}
+
+function AppleLogo({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+    </svg>
+  )
+}
+
+function RadiationMark({ size = 220 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+      <circle cx="50" cy="50" r="9" />
+      <path d="M50 44 A6 6 0 0 0 44 50 L20 50 A30 30 0 0 1 35 24 Z" transform="rotate(0 50 50)" />
+      <path d="M50 44 A6 6 0 0 0 44 50 L20 50 A30 30 0 0 1 35 24 Z" transform="rotate(120 50 50)" />
+      <path d="M50 44 A6 6 0 0 0 44 50 L20 50 A30 30 0 0 1 35 24 Z" transform="rotate(240 50 50)" />
+    </svg>
+  )
+}
 
 export default function HomePage() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const { features } = t
 
   return (
     <div>
       {/* ── HERO ── */}
       <section
-        style={{ minHeight: '92vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '6rem 1.5rem 4rem' }}
+        style={{
+          maxWidth: '1120px',
+          margin: '0 auto',
+          padding: '4.5rem 1.5rem 5rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 'clamp(2.5rem, 6vw, 5rem)',
+          minHeight: '88vh',
+        }}
       >
-        <ScrollReveal>
-          <div
-            style={{
-              display: 'inline-block',
-              fontFamily: 'Roboto Mono, monospace',
-              fontSize: '0.72rem',
-              letterSpacing: '0.2em',
-              color: 'var(--primary)',
-              border: '1px solid var(--border)',
-              borderRadius: '9999px',
-              padding: '0.3rem 1rem',
-              marginBottom: '2rem',
-              textTransform: 'uppercase',
-            }}
-          >
-            {t.hero.badge}
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={1}>
-          <h1
-            style={{
-              fontFamily: 'Orbitron, sans-serif',
-              fontWeight: 900,
-              fontSize: 'clamp(3rem, 10vw, 6rem)',
-              letterSpacing: '0.08em',
-              color: 'var(--text)',
-              margin: '0 0 0.5rem',
-              lineHeight: 1.1,
-            }}
-          >
-            BUNKER
-          </h1>
-        </ScrollReveal>
-
-        <ScrollReveal delay={2}>
-          <p
-            style={{
-              fontFamily: 'Roboto Mono, monospace',
-              fontSize: 'clamp(0.85rem, 2.5vw, 1.1rem)',
-              color: 'var(--text-muted)',
-              maxWidth: '520px',
-              margin: '0 auto 2.5rem',
-              lineHeight: 1.8,
-            }}
-          >
-            {t.hero.subtitle}
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={3}>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a
-              href="#"
+        {/* left: copy */}
+        <div style={{ flex: '1 1 420px', maxWidth: '580px' }}>
+          <ScrollReveal>
+            <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                background: 'var(--primary)',
-                color: '#0f1419',
-                fontFamily: 'Orbitron, sans-serif',
-                fontWeight: 700,
-                fontSize: '0.85rem',
-                letterSpacing: '0.08em',
-                padding: '0.85rem 2rem',
+                gap: '0.55rem',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                letterSpacing: '0.22em',
+                color: 'var(--primary)',
+                border: '1px solid var(--border)',
+                background: 'var(--primary-soft)',
                 borderRadius: '9999px',
-                textDecoration: 'none',
-                transition: 'opacity 0.2s, transform 0.2s',
+                padding: '0.35rem 1.1rem',
+                marginBottom: '2rem',
+                textTransform: 'uppercase',
               }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.opacity = '0.85'; el.style.transform = 'translateY(-2px)' }}
-              onMouseLeave={e => { const el = e.currentTarget; el.style.opacity = '1'; el.style.transform = 'translateY(0)' }}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              {t.hero.cta}
-            </a>
-          </div>
-        </ScrollReveal>
+              <span
+                className="pulse-dot"
+                style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--primary)', flexShrink: 0 }}
+              />
+              {t.hero.badge}
+            </div>
+          </ScrollReveal>
 
-        {/* scroll indicator */}
-        <ScrollReveal delay={4}>
-          <div
-            style={{ marginTop: '5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem', opacity: 0.4 }}
-          >
-            <span style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.65rem', letterSpacing: '0.15em', color: 'var(--text-muted)' }}>SCROLL</span>
-            <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, var(--text-muted), transparent)' }} />
+          <ScrollReveal delay={1}>
+            <h1
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontWeight: 700,
+                fontSize: 'clamp(4rem, 12vw, 7.5rem)',
+                letterSpacing: '0.05em',
+                lineHeight: 0.95,
+                margin: '0 0 1.5rem',
+                color: 'var(--text)',
+                textShadow: '0 0 60px rgba(242,56,79,0.45), 0 0 120px rgba(242,56,79,0.2)',
+                textTransform: 'uppercase',
+              }}
+            >
+              BUNKER
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal delay={2}>
+            <p
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 'clamp(0.88rem, 2.2vw, 1.05rem)',
+                color: 'var(--text-muted)',
+                maxWidth: '480px',
+                margin: '0 0 2.5rem',
+                lineHeight: 1.85,
+              }}
+            >
+              {t.hero.subtitle}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={3}>
+            <div style={{ display: 'flex', gap: '0.9rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
+              <a href={APP_STORE_URL} className="btn-cta">
+                <AppleLogo />
+                {t.hero.cta}
+              </a>
+              <a href="#how" className="btn-ghost">
+                {features.sectionTitle}
+              </a>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={4}>
+            <div style={{ display: 'flex', gap: '0.7rem', flexWrap: 'wrap' }}>
+              {[features.items[5]?.title, features.items[4]?.title].filter(Boolean).map(chip => (
+                <span
+                  key={chip}
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.7rem',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--text-muted)',
+                    border: '1px solid var(--border-soft)',
+                    borderRadius: '9999px',
+                    padding: '0.35rem 0.95rem',
+                  }}
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* right: phone */}
+        <ScrollReveal delay={2}>
+          <div style={{ position: 'relative', flex: '0 0 auto' }}>
+            {/* glow behind phone */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                inset: '-15%',
+                background: 'radial-gradient(ellipse at center, rgba(242,56,79,0.22) 0%, transparent 65%)',
+                filter: 'blur(10px)',
+              }}
+            />
+            <div className="phone-float" style={{ position: 'relative' }}>
+              <img
+                src="/hero-phone.jpg"
+                alt="Bunker game — character card screen"
+                width={640}
+                height={1346}
+                style={{
+                  width: 'min(78vw, 310px)',
+                  height: 'auto',
+                  borderRadius: '32px',
+                  border: '1px solid rgba(245,243,247,0.1)',
+                  boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(242,56,79,0.15)',
+                  display: 'block',
+                }}
+              />
+            </div>
           </div>
         </ScrollReveal>
       </section>
 
       {/* ── FEATURES ── */}
-      <section style={{ maxWidth: '1024px', margin: '0 auto', padding: '4rem 1.5rem 6rem' }}>
+      <section id="how" style={{ maxWidth: '1120px', margin: '0 auto', padding: '4rem 1.5rem 5rem', scrollMarginTop: '5rem' }}>
         <ScrollReveal>
           <h2
             style={{
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: 'var(--font-display)',
               fontWeight: 700,
-              fontSize: 'clamp(1.2rem, 4vw, 1.8rem)',
+              fontSize: 'clamp(1.6rem, 5vw, 2.6rem)',
               letterSpacing: '0.08em',
               color: 'var(--text)',
-              marginBottom: '0.75rem',
+              marginBottom: '0.6rem',
               textAlign: 'center',
+              textTransform: 'uppercase',
             }}
           >
             {features.sectionTitle}
           </h2>
-          <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontFamily: 'Roboto Mono, monospace', fontSize: '0.85rem', marginBottom: '3rem' }}>
+          <p
+            style={{
+              textAlign: 'center',
+              color: 'var(--text-muted)',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.85rem',
+              letterSpacing: '0.06em',
+              marginBottom: '3.5rem',
+            }}
+          >
             {features.sectionSubtitle}
           </p>
         </ScrollReveal>
@@ -132,39 +229,35 @@ export default function HomePage() {
         >
           {features.items.map((f, i) => (
             <ScrollReveal key={i} delay={(i % 3 + 1) as 1 | 2 | 3}>
-              <div
-                style={{
-                  background: 'var(--bg-card)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '16px',
-                  padding: '1.75rem',
-                  transition: 'border-color 0.25s, transform 0.25s',
-                }}
-                onMouseEnter={e => {
-                  const el = e.currentTarget
-                  el.style.borderColor = 'rgba(251,191,36,0.4)'
-                  el.style.transform = 'translateY(-3px)'
-                }}
-                onMouseLeave={e => {
-                  const el = e.currentTarget
-                  el.style.borderColor = 'var(--border)'
-                  el.style.transform = 'translateY(0)'
-                }}
-              >
-                <div style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>{f.icon}</div>
+              <div className="feature-card">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.1rem' }}>
+                  <span style={{ fontSize: '1.9rem', lineHeight: 1 }}>{f.icon}</span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.68rem',
+                      letterSpacing: '0.2em',
+                      color: 'var(--primary)',
+                      opacity: 0.75,
+                    }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
                 <h3
                   style={{
-                    fontFamily: 'Orbitron, sans-serif',
-                    fontWeight: 700,
-                    fontSize: '0.82rem',
-                    letterSpacing: '0.1em',
-                    color: 'var(--primary)',
-                    marginBottom: '0.6rem',
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 600,
+                    fontSize: '1.05rem',
+                    letterSpacing: '0.08em',
+                    color: 'var(--text)',
+                    margin: '0 0 0.6rem',
+                    textTransform: 'uppercase',
                   }}
                 >
                   {f.title}
                 </h3>
-                <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.75 }}>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.75 }}>
                   {f.body}
                 </p>
               </div>
@@ -173,55 +266,104 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── SCREENSHOTS ── */}
+      <section style={{ padding: '3rem 0 4rem' }}>
+        <ScrollReveal>
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 700,
+              fontSize: 'clamp(1.6rem, 5vw, 2.6rem)',
+              letterSpacing: '0.08em',
+              color: 'var(--text)',
+              margin: '0 auto 0.5rem',
+              textAlign: 'center',
+              textTransform: 'uppercase',
+              padding: '0 1.5rem',
+            }}
+          >
+            {galleryTitle[lang]}
+          </h2>
+        </ScrollReveal>
+
+        <ScrollReveal delay={1}>
+          <div className="shots-track" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            {['01', '02', '03', '04', '05'].map(n => (
+              <div className="shot-card" key={n}>
+                <img
+                  src={`/shots/${n}.jpg`}
+                  alt={`Bunker app screenshot ${n}`}
+                  width={646}
+                  height={1400}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
+      </section>
+
       {/* ── CTA BANNER ── */}
-      <section style={{ padding: '4rem 1.5rem 6rem' }}>
+      <section style={{ padding: '3rem 1.5rem 7rem' }}>
         <ScrollReveal>
           <div
             style={{
-              maxWidth: '680px',
+              position: 'relative',
+              maxWidth: '760px',
               margin: '0 auto',
-              background: 'var(--bg-card)',
-              border: '1px solid rgba(251,191,36,0.3)',
-              borderRadius: '24px',
-              padding: '3rem 2rem',
+              background: 'linear-gradient(160deg, rgba(242,56,79,0.10) 0%, var(--bg-card) 45%)',
+              border: '1px solid var(--border)',
+              borderRadius: '28px',
+              padding: 'clamp(2.5rem, 7vw, 4rem) 2rem',
               textAlign: 'center',
+              overflow: 'hidden',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.45), 0 0 80px rgba(242,56,79,0.07)',
             }}
           >
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                top: '-40px',
+                right: '-40px',
+                color: 'var(--primary)',
+                opacity: 0.07,
+                transform: 'rotate(12deg)',
+              }}
+            >
+              <RadiationMark size={260} />
+            </div>
+
             <h2
               style={{
-                fontFamily: 'Orbitron, sans-serif',
-                fontWeight: 900,
-                fontSize: 'clamp(1.4rem, 5vw, 2.2rem)',
+                position: 'relative',
+                fontFamily: 'var(--font-display)',
+                fontWeight: 700,
+                fontSize: 'clamp(1.9rem, 6vw, 3.2rem)',
                 letterSpacing: '0.06em',
                 color: 'var(--text)',
-                marginBottom: '1rem',
+                margin: '0 0 1.1rem',
+                textTransform: 'uppercase',
+                textShadow: '0 0 40px rgba(242,56,79,0.35)',
               }}
             >
               {t.cta.title}
             </h2>
-            <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.88rem', color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: 1.8 }}>
+            <p
+              style={{
+                position: 'relative',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.9rem',
+                color: 'var(--text-muted)',
+                maxWidth: '460px',
+                margin: '0 auto 2.2rem',
+                lineHeight: 1.85,
+              }}
+            >
               {t.cta.body}
             </p>
-            <a
-              href="#"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                background: 'var(--primary)',
-                color: '#0f1419',
-                fontFamily: 'Orbitron, sans-serif',
-                fontWeight: 700,
-                fontSize: '0.85rem',
-                letterSpacing: '0.08em',
-                padding: '0.85rem 2.2rem',
-                borderRadius: '9999px',
-                textDecoration: 'none',
-                transition: 'opacity 0.2s, transform 0.2s',
-              }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.opacity = '0.85'; el.style.transform = 'translateY(-2px)' }}
-              onMouseLeave={e => { const el = e.currentTarget; el.style.opacity = '1'; el.style.transform = 'translateY(0)' }}
-            >
+            <a href={APP_STORE_URL} className="btn-cta" style={{ position: 'relative' }}>
+              <AppleLogo />
               {t.cta.button}
             </a>
           </div>

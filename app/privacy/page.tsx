@@ -10,7 +10,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
   <section style={{ marginBottom: '2.5rem' }}>
     <h2
       style={{
-        fontFamily: 'Orbitron, sans-serif',
+        fontFamily: 'var(--font-display)',
         fontWeight: 700,
         fontSize: '0.9rem',
         letterSpacing: '0.12em',
@@ -21,7 +21,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
     >
       {title}
     </h2>
-    <div style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.85 }}>
+    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.85 }}>
       {children}
     </div>
   </section>

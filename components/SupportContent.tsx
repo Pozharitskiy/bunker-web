@@ -12,7 +12,7 @@ export default function SupportContent() {
       <div style={{ marginBottom: '3.5rem' }}>
         <p
           style={{
-            fontFamily: 'Roboto Mono, monospace',
+            fontFamily: 'var(--font-mono)',
             fontSize: '0.72rem',
             color: 'var(--primary)',
             letterSpacing: '0.18em',
@@ -23,7 +23,7 @@ export default function SupportContent() {
         </p>
         <h1
           style={{
-            fontFamily: 'Orbitron, sans-serif',
+            fontFamily: 'var(--font-display)',
             fontWeight: 900,
             fontSize: 'clamp(1.6rem, 5vw, 2.5rem)',
             letterSpacing: '0.06em',
@@ -35,7 +35,7 @@ export default function SupportContent() {
         </h1>
         <p
           style={{
-            fontFamily: 'Roboto Mono, monospace',
+            fontFamily: 'var(--font-mono)',
             fontSize: '0.88rem',
             color: 'var(--text-muted)',
             maxWidth: '560px',
@@ -47,7 +47,7 @@ export default function SupportContent() {
         </p>
         <p
           style={{
-            fontFamily: 'Roboto Mono, monospace',
+            fontFamily: 'var(--font-mono)',
             fontSize: '0.88rem',
             color: 'var(--text-muted)',
             maxWidth: '500px',
@@ -62,7 +62,7 @@ export default function SupportContent() {
       <div
         style={{
           background: 'var(--bg-card)',
-          border: '1px solid rgba(251,191,36,0.3)',
+          border: '1px solid rgba(242,56,79,0.3)',
           borderRadius: '16px',
           padding: '2rem',
           marginBottom: '2.5rem',
@@ -77,7 +77,7 @@ export default function SupportContent() {
             width: '52px',
             height: '52px',
             borderRadius: '12px',
-            background: 'rgba(251,191,36,0.12)',
+            background: 'rgba(242,56,79,0.12)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -90,7 +90,7 @@ export default function SupportContent() {
         <div>
           <p
             style={{
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: 'var(--font-display)',
               fontSize: '0.8rem',
               fontWeight: 700,
               letterSpacing: '0.1em',
@@ -103,7 +103,7 @@ export default function SupportContent() {
           <a
             href="mailto:supportbunker@gmail.com"
             style={{
-              fontFamily: 'Roboto Mono, monospace',
+              fontFamily: 'var(--font-mono)',
               fontSize: '1rem',
               color: 'var(--primary)',
               textDecoration: 'none',
@@ -116,7 +116,7 @@ export default function SupportContent() {
           </a>
           <p
             style={{
-              fontFamily: 'Roboto Mono, monospace',
+              fontFamily: 'var(--font-mono)',
               fontSize: '0.75rem',
               color: 'var(--text-muted)',
               marginTop: '0.3rem',
@@ -131,7 +131,7 @@ export default function SupportContent() {
       <div>
         <h2
           style={{
-            fontFamily: 'Orbitron, sans-serif',
+            fontFamily: 'var(--font-display)',
             fontWeight: 700,
             fontSize: '0.9rem',
             letterSpacing: '0.12em',
@@ -155,7 +155,7 @@ export default function SupportContent() {
                 transition: 'border-color 0.25s',
               }}
               onMouseEnter={e =>
-                ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(251,191,36,0.35)')
+                ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(242,56,79,0.35)')
               }
               onMouseLeave={e =>
                 ((e.currentTarget as HTMLElement).style.borderColor = 'var(--border)')
@@ -163,7 +163,7 @@ export default function SupportContent() {
             >
               <p
                 style={{
-                  fontFamily: 'Roboto Mono, monospace',
+                  fontFamily: 'var(--font-mono)',
                   fontWeight: 500,
                   fontSize: '0.87rem',
                   color: 'var(--text)',
@@ -174,7 +174,7 @@ export default function SupportContent() {
               </p>
               <p
                 style={{
-                  fontFamily: 'Roboto Mono, monospace',
+                  fontFamily: 'var(--font-mono)',
                   fontSize: '0.82rem',
                   color: 'var(--text-muted)',
                   margin: 0,
@@ -199,7 +199,7 @@ export default function SupportContent() {
             key={href}
             href={href}
             style={{
-              fontFamily: 'Roboto Mono, monospace',
+              fontFamily: 'var(--font-mono)',
               fontSize: '0.78rem',
               color: 'var(--text-muted)',
               textDecoration: 'none',

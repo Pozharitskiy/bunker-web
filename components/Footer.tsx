@@ -9,11 +9,11 @@ export default function Footer() {
   return (
     <footer
       className="relative z-20 w-full"
-      style={{ borderTop: '1px solid var(--border)', background: 'rgba(15,20,25,0.85)' }}
+      style={{ borderTop: '1px solid var(--border)', background: 'rgba(11,7,16,0.82)' }}
     >
       <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <span
-          style={{ fontFamily: 'Orbitron, sans-serif', color: 'var(--primary)', fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em' }}
+          style={{ fontFamily: 'var(--font-display)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em' }}
         >
           BUNKER
         </span>
@@ -28,7 +28,7 @@ export default function Footer() {
               key={href}
               href={href}
               style={{
-                fontFamily: 'Roboto Mono, monospace',
+                fontFamily: 'var(--font-mono)',
                 fontSize: '0.75rem',
                 color: 'var(--text-muted)',
                 textDecoration: 'none',
@@ -42,7 +42,7 @@ export default function Footer() {
           ))}
         </nav>
 
-        <p style={{ fontFamily: 'Roboto Mono, monospace', fontSize: '0.72rem', color: 'var(--text-muted)', margin: 0 }}>
+        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)', margin: 0 }}>
           © {new Date().getFullYear()} Bunker Game. {t.footer.rights}
         </p>
       </div>
