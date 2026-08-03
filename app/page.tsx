@@ -40,6 +40,19 @@ function RadiationMark({ size = 220 }: { size?: number }) {
   )
 }
 
+// redacted-line mark — stands in for per-feature iconography without reaching for emoji
+function RedactedMark({ size = 22 }: { size?: number }) {
+  return (
+    <svg width={size} height={size * 0.72} viewBox="0 0 32 23" fill="currentColor" aria-hidden="true">
+      <rect x="0" y="0" width="32" height="5" />
+      <rect x="0" y="9" width="20" height="5" />
+      <rect x="0" y="18" width="26" height="5" />
+    </svg>
+  )
+}
+
+const featureSpan = ['cell-hero', 'cell-wide', 'cell-tall', 'cell', 'cell', 'cell-wide']
+
 export default function HomePage() {
   const { t, lang } = useLang()
   const { features } = t
@@ -222,50 +235,25 @@ export default function HomePage() {
           </p>
         </ScrollReveal>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.25rem',
-          }}
-        >
-          {features.items.map((f, i) => (
-            <ScrollReveal key={i} delay={(i % 3 + 1) as 1 | 2 | 3}>
-              <div className="feature-card">
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.1rem' }}>
-                  <span style={{ fontSize: '1.9rem', lineHeight: 1 }}>{f.icon}</span>
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.68rem',
-                      letterSpacing: '0.2em',
-                      color: 'var(--primary)',
-                      opacity: 0.75,
-                    }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
+        <ScrollReveal>
+          <div className="feature-bento">
+            {features.items.map((f, i) => (
+              <div className={`feature-cell ${featureSpan[i % featureSpan.length]}`} key={i}>
+                {i === 0 && (
+                  <div aria-hidden="true" className="feature-cell-glow">
+                    <RadiationMark size={200} />
+                  </div>
+                )}
+                <div className="feature-cell-tag">
+                  <RedactedMark />
+                  FILE N°0{i + 1}
                 </div>
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontWeight: 600,
-                    fontSize: '1.05rem',
-                    letterSpacing: '0.08em',
-                    color: 'var(--text)',
-                    margin: '0 0 0.6rem',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {f.title}
-                </h3>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.75 }}>
-                  {f.body}
-                </p>
+                <h3 className="feature-cell-title">{f.title}</h3>
+                <p className="feature-cell-body">{f.body}</p>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* ── SCREENSHOTS ── */}
