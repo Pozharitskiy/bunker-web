@@ -173,8 +173,8 @@ export default function HomePage() {
               <img
                 src="/hero-phone.jpg"
                 alt="Bunker game — character card screen"
-                width={260}
-                height={427}
+                width={569}
+                height={1200}
                 style={{
                   width: 'min(78vw, 310px)',
                   height: 'auto',
