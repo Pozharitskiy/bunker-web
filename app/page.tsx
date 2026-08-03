@@ -159,29 +159,31 @@ export default function HomePage() {
         {/* right: phone */}
         <ScrollReveal delay={2}>
           <div style={{ position: 'relative', flex: '0 0 auto' }}>
-            {/* glow behind phone */}
+            {/* glow behind scene */}
             <div
               aria-hidden="true"
               style={{
                 position: 'absolute',
-                inset: '-15%',
-                background: 'radial-gradient(ellipse at center, rgba(242,56,79,0.22) 0%, transparent 65%)',
-                filter: 'blur(10px)',
+                inset: '-20%',
+                background: 'radial-gradient(ellipse at center, rgba(242,56,79,0.28) 0%, transparent 62%)',
+                filter: 'blur(24px)',
               }}
             />
             <div className="phone-float" style={{ position: 'relative' }}>
               <img
-                src="/hero-phone.jpg"
-                alt="Bunker game — character card screen"
-                width={569}
-                height={1200}
+                src="/hero-scene.jpg"
+                alt="Bunker game — Den denied access to the shelter, watched by the group"
+                width={1024}
+                height={1536}
                 style={{
-                  width: 'min(78vw, 310px)',
+                  width: 'min(84vw, 360px)',
                   height: 'auto',
-                  borderRadius: '32px',
-                  border: '1px solid rgba(245,243,247,0.1)',
-                  boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(242,56,79,0.15)',
                   display: 'block',
+                  filter: 'drop-shadow(0 25px 60px rgba(0,0,0,0.55)) drop-shadow(0 0 45px rgba(242,56,79,0.15))',
+                  maskImage:
+                    'radial-gradient(ellipse 92% 94% at 50% 48%, black 88%, transparent 100%)',
+                  WebkitMaskImage:
+                    'radial-gradient(ellipse 92% 94% at 50% 48%, black 88%, transparent 100%)',
                 }}
               />
             </div>
