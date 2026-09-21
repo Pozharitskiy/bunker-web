@@ -185,18 +185,16 @@ export default function HomePage() {
             <div className="phone-float" style={{ position: 'relative' }}>
               <img
                 src="/hero-scene.jpg"
-                alt="Bunker game — Den denied access to the shelter, watched by the group"
-                width={1024}
-                height={1536}
+                alt="Bunker — your friends decide if you deserve to live"
+                width={720}
+                height={1564}
                 style={{
-                  width: 'min(84vw, 360px)',
+                  width: 'min(78vw, 300px)',
                   height: 'auto',
                   display: 'block',
+                  borderRadius: '28px',
+                  border: '1px solid var(--border-soft)',
                   filter: 'drop-shadow(0 25px 60px rgba(0,0,0,0.55)) drop-shadow(0 0 45px rgba(242,56,79,0.15))',
-                  maskImage:
-                    'radial-gradient(ellipse 92% 94% at 50% 48%, black 88%, transparent 100%)',
-                  WebkitMaskImage:
-                    'radial-gradient(ellipse 92% 94% at 50% 48%, black 88%, transparent 100%)',
                 }}
               />
             </div>
@@ -278,13 +276,20 @@ export default function HomePage() {
 
         <ScrollReveal delay={1}>
           <div className="shots-track" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            {['01', '02', '03', '04', '05'].map(n => (
+            {[
+              ['01', 'Vote now — the group decides who is exiled from the bunker'],
+              ['02', 'Choose your scenario: Nuclear Winter, Fungal Outbreak, Cyber Uprising, Blood Eclipse, Last Citadel'],
+              ['03', 'One phone, up to 12 players'],
+              ['04', 'AI took over — only the smart survive'],
+              ['05', 'Survivors screen — no two games end the same'],
+              ['06', 'Describe any scenario and Bunker builds the game'],
+            ].map(([n, alt]) => (
               <div className="shot-card" key={n}>
                 <img
                   src={`/shots/${n}.jpg`}
-                  alt={`Bunker app screenshot ${n}`}
-                  width={646}
-                  height={1400}
+                  alt={alt}
+                  width={660}
+                  height={1434}
                   loading="lazy"
                 />
               </div>
