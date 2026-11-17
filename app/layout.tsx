@@ -4,16 +4,20 @@ import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 import HexBackground from '@/components/HexBackground'
 import { LangProvider } from '@/lib/i18n'
+import { STUDIO_NAME, STUDIO_TAGLINE } from '@/lib/studio'
 
 export const metadata: Metadata = {
-  title: 'Bunker — Survival Social Deduction Game',
-  description:
-    'A social deduction party game about surviving a nuclear apocalypse. Who gets a spot in the bunker?',
-  keywords: ['bunker', 'social deduction', 'party game', 'survival', 'nuclear', 'iOS', 'mobile game'],
-  authors: [{ name: 'Bunker Game' }],
+  title: {
+    default: `${STUDIO_NAME} — party games for one phone`,
+    // Game pages set their own title; this keeps the studio behind it.
+    template: `%s · ${STUDIO_NAME}`,
+  },
+  description: STUDIO_TAGLINE,
+  keywords: ['party games', 'social deduction', 'mafia', 'werewolf', 'bunker', 'offline', 'iOS', 'one phone'],
+  authors: [{ name: STUDIO_NAME }],
   openGraph: {
-    title: 'Bunker — Survival Social Deduction Game',
-    description: 'Who deserves a spot in the bunker? A tense social deduction game for 4–12 players.',
+    title: `${STUDIO_NAME} — party games for one phone`,
+    description: STUDIO_TAGLINE,
     type: 'website',
   },
   icons: {

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useRef, useState, useEffect } from 'react'
 import { useLang, langLabels } from '@/lib/i18n'
+import { STUDIO_NAME } from '@/lib/studio'
 
 export default function NavBar() {
   const pathname = usePathname()
@@ -19,10 +20,14 @@ export default function NavBar() {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
+  // Catalogue-level, not Bunker-level: the site is a studio's now, and the
+  // legal pages it used to carry up here live in the footer where they
+  // belong. Left in English deliberately — the translated strings describe
+  // Bunker's own pages, and the studio layer has no translations of its own.
   const navLinks = [
-    { href: '/', label: t.nav.home },
-    { href: '/privacy', label: t.nav.privacy },
-    { href: '/terms', label: t.nav.terms },
+    { href: '/#games', label: 'Games' },
+    { href: '/bunker', label: 'Bunker' },
+    { href: '/mafia/support', label: 'Mafia' },
     { href: '/support', label: t.nav.support },
   ]
 
@@ -31,22 +36,23 @@ export default function NavBar() {
       className="relative z-20 w-full"
       style={{ borderBottom: '1px solid var(--border-soft)', background: 'rgba(11,7,16,0.82)', backdropFilter: 'blur(12px)' }}
     >
-      <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+      {/* Wraps rather than overflows: the studio wordmark is a good deal
+          wider than the single word that used to sit here, and brand + four
+          links + the language picker no longer fit one 375px row. */}
+      <nav className="max-w-5xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+        {/* The studio wordmark, not a game's. Set in the editorial face the
+            studio page uses, so the top of every page agrees with it. */}
         <Link
           href="/"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', fontFamily: 'var(--font-display)', color: 'var(--text)', fontWeight: 700, fontSize: '1.15rem', letterSpacing: '0.14em', textDecoration: 'none', flexShrink: 0 }}
+          aria-label={`${STUDIO_NAME} — home`}
+          style={{ display: 'inline-flex', alignItems: 'baseline', gap: '0.35rem', fontFamily: 'var(--font-editorial)', color: 'var(--text)', fontWeight: 700, fontSize: '1.05rem', letterSpacing: '0.01em', textDecoration: 'none', flexShrink: 0, whiteSpace: 'nowrap' }}
         >
-          <img
-            src="/app-icon.jpg"
-            alt=""
-            width={30}
-            height={30}
-            style={{ borderRadius: '8px', border: '1px solid var(--border-soft)', display: 'block' }}
-          />
-          BUNKER
+          One
+          <span style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--text-muted)' }}>Phone</span>
+          Games
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-x-6 gap-y-3 flex-wrap">
           <ul className="flex gap-5 list-none m-0 p-0 flex-wrap">
             {navLinks.map(({ href, label }) => {
               const active = pathname === href
@@ -80,8 +86,13 @@ export default function NavBar() {
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.72rem',
                 letterSpacing: '0.1em',
-                padding: '0.28rem 0.6rem',
-                borderRadius: '6px',
+                // A full touch target: the control used to be ~22pt tall,
+                // which the layout audit flagged as shorter than a fingertip.
+                minHeight: '44px',
+                minWidth: '58px',
+                justifyContent: 'center',
+                padding: '0.28rem 0.7rem',
+                borderRadius: '8px',
                 border: '1px solid var(--border)',
                 background: open ? 'rgba(242,56,79,0.1)' : 'transparent',
                 color: 'var(--primary)',

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLang } from '@/lib/i18n'
+import { STUDIO_NAME } from '@/lib/studio'
 
 export default function Footer() {
   const { t } = useLang()
@@ -13,9 +14,9 @@ export default function Footer() {
     >
       <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <span
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--primary)', fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em' }}
+          style={{ fontFamily: 'var(--font-editorial)', color: 'var(--text)', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.01em' }}
         >
-          BUNKER
+          {STUDIO_NAME}
         </span>
 
         <nav className="flex gap-5">
@@ -43,7 +44,7 @@ export default function Footer() {
         </nav>
 
         <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)', margin: 0 }}>
-          © {new Date().getFullYear()} Bunker Game. {t.footer.rights}
+          © {new Date().getFullYear()} {STUDIO_NAME}. {t.footer.rights}
         </p>
       </div>
     </footer>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Roboto+Mono:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto+Mono:wght@300;400;500;700&display=swap');
 
 @import "tailwindcss";
 
@@ -18,6 +18,10 @@
   --border-soft: rgba(245, 243, 247, 0.08);
   --font-display: 'Oswald', 'Arial Narrow', 'Helvetica Neue', sans-serif;
   --font-mono: 'Roboto Mono', 'SF Mono', monospace;
+  /* The studio's own voice. Each game keeps its display face (Oswald for
+     Bunker); the layer above them is editorial, which is what tells a
+     catalogue page from a product page at a glance. */
+  --font-editorial: 'Playfair Display', Georgia, serif;
 }
 
 * {
@@ -299,4 +303,477 @@ h1, h2, h3, h4, h5, h6 {
   .phone-float, .pulse-dot { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   * { transition-duration: 0.01ms !important; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   STUDIO PAGE
+   Portfolio-grid pattern, motion-driven style (see
+   design-system/one-phone-games/). Everything is scoped under `.studio` so it
+   cannot reach the game landing pages, which keep their own look — the studio
+   layer is deliberately a different register from the products under it.
+
+   It defines no accent of its own: `--accent` is set per game card, inline,
+   and is the only colour on the page.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.studio {
+  --gutter: 1.5rem;
+  --measure: 1180px;
+}
+
+.studio .section {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(5rem, 11vw, 9rem) var(--gutter);
+}
+
+/* ── Hero ──────────────────────────────────────────────────────────────── */
+
+.studio .hero {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(4rem, 10vw, 7rem) var(--gutter) clamp(4rem, 9vw, 6rem);
+  min-height: min(74vh, 760px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.studio .hero-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* The figures read as a masthead sidebar: one per row, divided by hairlines,
+   rather than a wide band under the mark. */
+.studio .hero-side {
+  align-self: center;
+}
+
+/* Each word on its own line, set tight: the mark is meant to read as a
+   masthead, not a sentence. `clamp` keeps the longest word inside the gutter
+   at 375px without a separate mobile size. */
+.studio .wordmark {
+  font-family: var(--font-editorial);
+  font-weight: 900;
+  font-size: clamp(3rem, 11vw, 9.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  margin: 1.25rem 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The middle word is the one the whole catalogue turns on, so it carries the
+   emphasis the other two don't. */
+.studio .wordmark span:nth-child(2) {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.studio .tagline {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.15rem, 2.6vw, 1.65rem);
+  line-height: 1.45;
+  color: var(--text);
+  max-width: 30ch;
+  margin: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+}
+
+.studio .stats {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+.studio .stats > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.studio .stats dt {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.studio .stats dd {
+  font-family: var(--font-editorial);
+  font-size: 2.1rem;
+  line-height: 1;
+  margin: 0;
+  /* Tabular figures so the column of numbers aligns on one stem. */
+  font-variant-numeric: tabular-nums;
+}
+
+.studio .hero-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: clamp(2.5rem, 6vw, 3.5rem);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  /* A full touch target even though it reads as a line of text. */
+  min-height: 44px;
+  cursor: pointer;
+  transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.studio .hero-jump:hover {
+  color: var(--text);
+  gap: 1rem;
+}
+
+/* ── Section furniture ─────────────────────────────────────────────────── */
+
+.studio .section-head {
+  max-width: 44ch;
+  margin-bottom: clamp(3rem, 7vw, 4.5rem);
+}
+
+.studio .section-title {
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0.9rem 0 0;
+}
+
+.studio .section-lede {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin: 1.1rem 0 0;
+  max-width: 54ch;
+}
+
+/* ── Games ─────────────────────────────────────────────────────────────── */
+
+.studio .games {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 9vw, 7rem);
+}
+
+.studio .game-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+/* Both previews are the same portrait ratio (0.46), so letting them fill
+   their column made each row ~850px tall against ~420px of text — half a
+   row of nothing beside every description, which is what the layout audit
+   flagged. Capping the width caps the height, and because the ratio is
+   shared both games land on exactly the same preview size. */
+.studio .game-art {
+  max-width: 278px;
+  margin-inline: auto;
+}
+
+/* Alternating sides via `order`, not `direction`: flipping writing direction
+   to move a column also flips punctuation inside any text that inherits it. */
+.studio .game-entry-flipped .game-art { order: 2; }
+
+.studio .game-art {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  /* The art is lit by the game's own accent rather than framed in grey. */
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55),
+              0 0 60px color-mix(in srgb, var(--accent) 14%, transparent);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.studio .game-entry:hover .game-art {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow: 0 38px 90px rgba(0, 0, 0, 0.62),
+              0 0 80px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.studio .game-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.studio .game-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.studio .game-icon {
+  border-radius: 11px;
+  border: 1px solid var(--border-soft);
+  display: block;
+  flex-shrink: 0;
+}
+
+.studio .game-name {
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0 0 0.25rem;
+}
+
+.studio .game-pitch {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.3vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--text);
+  margin: 1.6rem 0 0;
+}
+
+.studio .game-body {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 1rem 0 0;
+  max-width: 52ch;
+}
+
+.studio .game-facts {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.6rem 0 0;
+  padding: 0;
+}
+
+.studio .game-facts li {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+  border-radius: 9999px;
+  padding: 0.42rem 0.85rem;
+}
+
+.studio .game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* Buttons are scoped: the Bunker page has its own `.btn-ghost` and must keep
+   it. One primary action per card, the secondary visibly subordinate. */
+.studio .btn-solid,
+.studio .btn-ghost,
+.studio .btn-pending {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 46px;
+  padding: 0 1.4rem;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.studio .btn-solid {
+  background: var(--accent);
+  color: #0b0710;
+  font-weight: 500;
+  border: 1px solid var(--accent);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.studio .btn-solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 38px color-mix(in srgb, var(--accent) 42%, transparent);
+}
+
+.studio .btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+  font-weight: 400;
+}
+
+.studio .btn-ghost:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+/* Not a button: a state. Styled so it cannot be mistaken for something to
+   tap — a game in review has nowhere to send anyone yet. */
+.studio .btn-pending {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  border: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent);
+  cursor: default;
+}
+
+.studio .pending-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ── Principles ────────────────────────────────────────────────────────── */
+
+/* Exactly two across, not auto-fit: at four the cells were ~210px of text and
+   every title broke into three lines, and auto-fit then settled on three,
+   which left two-thirds of the second row empty — the layout audit's
+   finding. Two gives each rule a readable measure and makes the 2x2 echo the
+   "four rules" it is titled with. */
+.studio .principles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* The gap *is* the rule between cells: a 1px grid gap over a hairline
+   background draws the dividers without a border per cell, which is what
+   kept doubling up at the seams. */
+.studio .principles > * {
+  background: var(--bg);
+}
+
+.studio .principle {
+  padding: clamp(1.8rem, 3.5vw, 2.6rem);
+  height: 100%;
+  transition: background 0.3s ease;
+}
+
+.studio .principle:hover {
+  background: var(--bg-card);
+}
+
+.studio .principle-n {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.studio .principle-title {
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin: 1.1rem 0 0;
+}
+
+.studio .principle-body {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0.8rem 0 0;
+}
+
+/* ── Contact ───────────────────────────────────────────────────────────── */
+
+.studio .contact {
+  text-align: center;
+  border-top: 1px solid var(--border-soft);
+}
+
+.studio .contact-title {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.22;
+  margin: 1rem 0 0;
+}
+
+.studio .contact-mail {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 2.6vw, 1.25rem);
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-soft);
+  padding: 0.4rem 0.2rem;
+  min-height: 44px;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.studio .contact-mail:hover {
+  border-bottom-color: var(--text);
+}
+
+.studio .contact-note {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 46ch;
+  margin: 1.8rem auto 0;
+}
+
+/* ── Narrow screens ────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .studio .hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  /* Tighter than the desktop rhythm: stacked, the figures sit directly
+     under the mark, and the shared section padding below them was opening a
+     band of nothing before the first game. */
+  .studio .hero-side { margin-top: 2rem; }
+  .studio .hero { padding-bottom: 2rem; }
+  /* Stacked, every section's own padding meets the next one's, which on a
+     phone added up to a band far wider than the gaps either side of it. */
+  .studio .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .studio .principles { grid-template-columns: minmax(0, 1fr); }
+  .studio .game-entry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* The art leads on a phone whichever side it takes on desktop, so the two
+     cards don't read as two different components. */
+  .studio .game-entry-flipped .game-art { order: 0; }
+  .studio .game-art {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio .game-entry:hover .game-art { transform: none; }
+  .studio .hero-jump:hover { gap: 0.6rem; }
+  .studio .pending-dot { animation: none; }
 }
